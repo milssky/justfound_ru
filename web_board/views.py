@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import HttpResponse
 
-# Create your views here.
+from telegram_group_poster.utils import send_message
+
+
+def index(request):
+    return HttpResponse("Hello")
+
+
+def send(request):
+    send_message("Сообщение, отправленное с сайта")
+    return HttpResponse("Отправлено")
