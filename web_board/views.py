@@ -1,10 +1,10 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, render
 
 from telegram_group_poster.utils import send_message
 
 
 def index(request):
-    return HttpResponse("Hello")
+    return render(request, "base.html")
 
 
 def send(request):
