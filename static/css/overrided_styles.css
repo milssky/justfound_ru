@@ -1,11 +1,13 @@
 body {
     background: #232328;
+    font-family: 'Roboto Slab', serif;
+    font-size: 14pt;
+}
+
+h1, h2, h3 {
+    font-family: 'Merriweather', serif
 }
 
 .container {
     background: white;
-}
-
-.page {
-
 }
