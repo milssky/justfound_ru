@@ -4,7 +4,7 @@ from telegram_group_poster.utils import send_message
 
 
 def index(request):
-    return render(request, "base.html")
+    return render(request, "web_board/page.html")
 
 
 def send(request):
