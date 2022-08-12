@@ -2,7 +2,7 @@ from aiogram import Bot
 from asgiref.sync import async_to_sync
 from django.conf import settings
 
-bot = Bot("5492461947:AAEyWUyVctBQg4VNBEldgILcFFHLj8JWV64")
+bot = Bot(settings.TELEGRAM_BOT_TOKEN)
 
 
 @async_to_sync
