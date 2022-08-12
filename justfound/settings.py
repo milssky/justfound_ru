@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+# TODO: Не забудь убрать всю эту шляпу
+from dotenv import load_dotenv
+
+load_dotenv(".env")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +30,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "telegram_group_poster",
     "web_board",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -128,6 +134,11 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", default='token')
 
-TELEGRAM_CHANNEL_ID = os.getenv("TELEGRAM_CHANNEL_ID")
+TELEGRAM_CHANNEL_ID = os.getenv("TELEGRAM_CHANNEL_ID", default='channel_id')
+
+AUTH_USER_MODEL = 'users.TgUser'
+AUTHENTICATION_BACKENDS = ['users.backends.TelegramBackend']
+LOGIN_REDIRECT_URL = ''
+LOGIN_URL = "login/"
