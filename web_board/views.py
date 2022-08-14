@@ -4,10 +4,12 @@ from django.shortcuts import HttpResponse, HttpResponsePermanentRedirect, render
 
 from users.utils import validate_auth_data
 from telegram_group_poster.utils import send_message
+from .models import Post
 
 
 def index(request):
-    return render(request, "web_board/page.html")
+    posts = Post.objects.select_related("author")
+    return render(request, "web_board/page.html", {"posts": posts})
 
 
 @login_required
