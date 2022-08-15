@@ -154,7 +154,7 @@ MARTOR_ENABLE_CONFIGS = {
     'imgur': 'false',        # to enable/disable imgur/custom uploader.
     'mention': 'false',     # to enable/disable mention
     'jquery': 'true',       # to include/revoke jquery (require for admin default django)
-    'living': 'false',      # to enable/disable live updates in preview
+    'living': 'true',      # to enable/disable live updates in preview
     'spellcheck': 'false',  # to enable/disable spellcheck in form textareas
     'hljs': 'true',         # to enable/disable hljs highlighting in preview
 }
@@ -208,12 +208,13 @@ MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/'              
 
 # If you need to use your own themed "bootstrap" or "semantic ui" dependency
 # replace the values with the file in your static files dir
-MARTOR_ALTERNATIVE_JS_FILE_THEME = "semantic-themed/semantic.min.js"   # default None
-MARTOR_ALTERNATIVE_CSS_FILE_THEME = "semantic-themed/semantic.min.css" # default None
-MARTOR_ALTERNATIVE_JQUERY_JS_FILE = "jquery/dist/jquery.min.js"        # default None
+# MARTOR_ALTERNATIVE_JS_FILE_THEME = "semantic-themed/semantic.min.js"   # default None
+# MARTOR_ALTERNATIVE_CSS_FILE_THEME = "semantic-themed/semantic.min.css" # default None
+# MARTOR_ALTERNATIVE_JQUERY_JS_FILE = "jquery/dist/jquery.min.js"        # default None
 
 # URL schemes that are allowed within links
 ALLOWED_URL_SCHEMES = [
     "file", "ftp", "ftps", "http", "https", "irc", "mailto",
     "sftp", "ssh", "tel", "telnet", "tftp", "vnc", "xmpp",
 ]
+
