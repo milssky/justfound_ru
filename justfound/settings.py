@@ -150,7 +150,7 @@ MARTOR_THEME = 'bootstrap'
 # Global martor settings
 # Input: string boolean, `true/false`
 MARTOR_ENABLE_CONFIGS = {
-    'emoji': 'true',        # to enable/disable emoji icons.
+    'emoji': 'false',        # to enable/disable emoji icons.
     'imgur': 'false',        # to enable/disable imgur/custom uploader.
     'mention': 'false',     # to enable/disable mention
     'jquery': 'true',       # to include/revoke jquery (require for admin default django)

@@ -14,7 +14,7 @@ def index(request):
 
 @login_required
 def send(request):
-    send_message("Сообщение, отправленное с сайта")
+    send_message("Сообщение, **отправленное с сайта**")
     return HttpResponse("Отправлено")
 
 
