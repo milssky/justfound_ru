@@ -136,8 +136,8 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", default='token')
-
 TELEGRAM_CHANNEL_ID = os.getenv("TELEGRAM_CHANNEL_ID", default='channel_id')
+TELEGRAM_BOT_NAME = os.getenv("TELEGRAM_BOT_NAME", default="bot_bot")
 
 AUTH_USER_MODEL = 'users.TgUser'
 AUTHENTICATION_BACKENDS = ['users.backends.TelegramBackend']

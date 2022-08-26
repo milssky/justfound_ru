@@ -17,6 +17,7 @@ class Post(models.Model):
     )
 
     class Meta:
+        get_latest_by = ("pub_date",)
         ordering = ("-pub_date",)
         verbose_name = "Пост"
         verbose_name_plural = "Посты"

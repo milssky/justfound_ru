@@ -8,8 +8,17 @@ from .models import Post
 
 
 def index(request):
-    posts = Post.objects.select_related("author")
-    return render(request, "web_board/page.html", {"posts": posts})
+    post = Post.objects.select_related("author").latest()
+    return render(request, "web_board/page.html", {"post": post})
+
+
+def history(request):
+    posts = Post.objects.select_related('author')
+    return render(
+        request,
+        "web_board/history.html",
+        {}
+    )
 
 
 @login_required

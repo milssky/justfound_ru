@@ -4,15 +4,13 @@
 
 {% block title %}{% endblock %}
 {% block content %}
-    {% for post in posts %}
-        <div class="page px-5 py-4">
-        {% include 'web_board/includes/page_header.html' %}
-        <div class="page__title pb-5 pt-3 px-5 "><h1>{{ post.title }}</h1></div>
-        <div class="page__content px-5 ">
-            {{ post.text|safe_markdown }}
-        </div>
-        {% include 'web_board/includes/page_footer.html' %}
-    {% endfor %}
+    <div class="page px-5 py-4">
+    {% include 'web_board/includes/page_header.html' %}
+    <div class="page__title pb-5 pt-3 px-5 "><h1>{{ post.title }}</h1></div>
+    <div class="page__content px-5 ">
+        {{ post.text|safe_markdown }}
+    </div>
+    {% include 'web_board/includes/page_footer.html' %}
     </div>
 
 {% endblock %}
