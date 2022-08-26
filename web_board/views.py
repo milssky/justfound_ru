@@ -13,7 +13,8 @@ def index(request):
 
 
 def history(request):
-    posts = Post.objects.select_related('author')
+    posts = Post.objects.select_related("author")
+    post_dates = posts.values_list('pub_date')
     return render(
         request,
         "web_board/history.html",

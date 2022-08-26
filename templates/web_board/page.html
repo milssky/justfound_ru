@@ -2,9 +2,9 @@
 {% load static %}
 {% load martortags %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ post.title|upper }} - Недавно нашел!{% endblock %}
 {% block content %}
-    <div class="page px-5 py-4">
+
     {% include 'web_board/includes/page_header.html' %}
     <div class="page__title pb-5 pt-3 px-5 "><h1>{{ post.title }}</h1></div>
     <div class="page__content px-5 ">
