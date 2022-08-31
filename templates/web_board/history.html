@@ -3,5 +3,11 @@
 {% block title %}АРХИВ - Недавно нашел!{% endblock %}
 
 {% block content %}
-
+    {% regroup posts by pub_date|date:"F y" as months %}
+    {% for m in months %}
+        <h1 class="py-3 px-5">{{ m.grouper }}</h1>
+        {% for post in m.list %}
+            <p><span class="px-5 text-secondary">{{ post.pub_date|date:"d" }}</span><a href="{% url "web_board:post_detail" post.pk %}">{{ post.title }}</a></p>
+        {% endfor %}
+    {% endfor %}
 {% endblock %}

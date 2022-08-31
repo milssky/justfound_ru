@@ -23,4 +23,4 @@ class Post(models.Model):
         verbose_name_plural = "Посты"
 
     def __str__(self):
-        return self.title
+        return f"{self.title} at {self.pub_date}"

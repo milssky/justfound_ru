@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import HttpResponse, HttpResponsePermanentRedirect, render
+from django.shortcuts import HttpResponse, HttpResponsePermanentRedirect, render, get_object_or_404
 
 from users.utils import validate_auth_data
 from telegram_group_poster.utils import send_message
@@ -18,8 +18,13 @@ def history(request):
     return render(
         request,
         "web_board/history.html",
-        {}
+        {'posts': posts}
     )
+
+
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    return render(request, "web_board/page.html", {"post": post})
 
 
 @login_required
