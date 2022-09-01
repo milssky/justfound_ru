@@ -12,11 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
-# TODO: Не забудь убрать всю эту шляпу
-from dotenv import load_dotenv
-
-load_dotenv(".env")
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", default="key-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", default="True")
 
 ALLOWED_HOSTS = ['*']
 
@@ -170,10 +165,6 @@ MARTOR_TOOLBAR_BUTTONS = [
 # To setup the martor editor with title label or not (default is False)
 MARTOR_ENABLE_LABEL = False
 
-# Imgur API Keys
-MARTOR_IMGUR_CLIENT_ID = 'your-client-id'
-MARTOR_IMGUR_API_KEY   = 'your-api-key'
-
 # Markdownify
 MARTOR_MARKDOWNIFY_FUNCTION = 'martor.utils.markdownify' # default
 MARTOR_MARKDOWNIFY_URL = '/martor/markdownify/' # default
@@ -218,7 +209,7 @@ ALLOWED_URL_SCHEMES = [
     "sftp", "ssh", "tel", "telnet", "tftp", "vnc", "xmpp",
 ]
 
-SITE_HOST = "http://localhost.local"
+SITE_HOST = os.getenv("SITE_HOST", default="http://localhost.local")
 
 POST_TEMPLATE = (
     "**{}**\n\n"
@@ -227,4 +218,3 @@ POST_TEMPLATE = (
     "[Читать полную версию]({}{})"
 )
 
-SITE_ID = 2

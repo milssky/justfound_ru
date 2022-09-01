@@ -30,10 +30,11 @@ class Post(models.Model):
     def save(
             self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
+        super().save()
         if not self.is_posted:
             self.is_posted = True
             send_message(self.make_full_markdown_post())
-        super().save()
+
 
     class Meta:
         get_latest_by = ("pub_date",)

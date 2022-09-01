@@ -39,9 +39,4 @@ def tg_login(request):
         return HttpResponse('Wrong auth data. Check it and try again')
     user = authenticate(username=auth_data['username'])
     login(request, user)
-    return HttpResponsePermanentRedirect('/home')
-
-
-@login_required
-def home(request):
-    return HttpResponse(f"{request.user} logged")
+    return HttpResponsePermanentRedirect('/admin')
