@@ -218,3 +218,13 @@ ALLOWED_URL_SCHEMES = [
     "sftp", "ssh", "tel", "telnet", "tftp", "vnc", "xmpp",
 ]
 
+SITE_HOST = "http://localhost.local"
+
+POST_TEMPLATE = (
+    "**{}**\n\n"
+    ""
+    "{}\n\n"
+    "[Читать полную версию]({}{})"
+)
+
+SITE_ID = 2
