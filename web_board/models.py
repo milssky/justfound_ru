@@ -1,6 +1,9 @@
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
 from martor.models import MartorField
+
+from telegram_group_poster.utils import send_message
 
 User = get_user_model()
 
@@ -15,6 +18,22 @@ class Post(models.Model):
         related_name="posts",
         verbose_name="Автор"
     )
+    is_posted = models.BooleanField(default=False, blank=False, null=False)
+
+    def make_full_markdown_post(self):
+        return settings.POST_TEMPLATE.format(self.title, self.text, settings.SITE_HOST, self.get_absolute_url())
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('web_board:post_detail', kwargs={'post_id': self.pk})
+
+    def save(
+            self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        if not self.is_posted:
+            self.is_posted = True
+            send_message(self.make_full_markdown_post())
+        super().save()
 
     class Meta:
         get_latest_by = ("pub_date",)
