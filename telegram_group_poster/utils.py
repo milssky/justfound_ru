@@ -5,7 +5,7 @@ from django.conf import settings
 from martor.utils import markdownify
 
 
-bot = Bot(settings.TELEGRAM_BOT_TOKEN, parse_mode=types.ParseMode.HTML)
+# bot = Bot(settings.TELEGRAM_BOT_TOKEN, parse_mode=types.ParseMode.HTML)
 
 
 def prepare_text_to_bot(text: str) -> str:
