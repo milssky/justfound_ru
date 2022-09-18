@@ -1,0 +1,26 @@
+volumes:
+  static:
+  media:
+
+services:
+  web:
+    build: .
+    restart: always
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    volumes:
+      - ./static:/static_collected/
+      - ./media:/media/
+
+  nginx:
+    image: nginx:1.21.6
+    ports:
+      - 80:80
+    volumes:
+      - ./default.nginx:/etc/nginx/conf.d/default.conf
+      - ./static:/var/html/static/
+      - ./media:/var/html/media
+    depends_on:
+      - web
