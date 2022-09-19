@@ -35,6 +35,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://web:8000',
     'http://web',
     'https://web',
+    'http://127.0.0.1',
+    'https://127.0.0.1'
 ]
 
 # Application definition
