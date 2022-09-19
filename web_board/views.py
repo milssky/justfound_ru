@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse, HttpResponsePermanentRedirect, render, get_object_or_404
+from django.views.generic import TemplateView
 
 from users.utils import validate_auth_data
 from telegram_group_poster.utils import send_message
@@ -14,7 +15,6 @@ def index(request):
 
 def history(request):
     posts = Post.objects.select_related("author")
-    post_dates = posts.values_list('pub_date')
     return render(
         request,
         "web_board/history.html",
@@ -40,3 +40,7 @@ def tg_login(request):
     user = authenticate(username=auth_data['username'])
     login(request, user)
     return HttpResponsePermanentRedirect('/admin')
+
+
+class ManifestView(TemplateView):
+    template_name = "web_board/manifest.html"
