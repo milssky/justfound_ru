@@ -26,7 +26,16 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", default="key-key")
 DEBUG = os.getenv("DJANGO_DEBUG", default="True")
 
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost',
+    'https://localhost',
+    'https://justfound.ru',
+    'http://justfound.ru',
+    'http://web:8000',
+    'https://web:8000',
+    'http://web',
+    'https://web',
+]
 
 # Application definition
 
@@ -78,13 +87,23 @@ WSGI_APPLICATION = "justfound.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': os.environ.get('DB_ENGINE') or 'django.db.backends.sqlite3',
+        'NAME': os.environ.get('POSTGRES_DB') or os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
