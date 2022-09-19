@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class TelegramBackend(BaseBackend):
-    def authenticate(self, request, username=None):
+    def authenticate(self, request, username=None, password=None):
         try:
             user = User.objects.get(username=username)
         except User.DoesNotExist:
