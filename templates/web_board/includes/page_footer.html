@@ -2,13 +2,20 @@
     <div class="page_date col-auto me-auto text-secondary">{{ post.pub_date}}</div>
     <nav class="page_nav col-auto offset-md-4">
         <div class="row text-center">
-            <div class="page_nav__archive col-auto"><a href="{% url "web_board:history" %}">Архив</a></div>
-            <div class="page__prev col-auto">
-                <a href=""><i class="bi bi-arrow-left"></i> Назад</a>
-            </div>
-            <div class="page__next col-auto">
-                <a href="">Вперед <i class="bi bi-arrow-right"></i></a>
-            </div>
+            <nav class="col-auto align-middle">
+                <ul class="pagination">
+                {% if post.get_previous_by_pub_date %}
+                    <li class="page-item"><a class="page-link" href="{% url "web_board:post_detail" post.get_previous_by_pub_date.pk %}"><i class="bi bi-arrow-left"></i></a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link" href=""><i class="bi bi-arrow-left"></i></a></li>
+                {% endif %}
+                {% if post.get_next_by_pub_date %}
+                    <li class="page-item"><a class="page-link" href="{% url "web_board:post_detail" post.get_next_by_pub_date.pk %}"><i class="bi bi-arrow-right"></i></a></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link disabled" href=""><i class="bi bi-arrow-right"></i></a></li>
+                {% endif %}
+                </ul>
+            </nav>
         </div>
     </nav>
 </div>
