@@ -36,7 +36,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://web',
     'https://web',
     'http://127.0.0.1',
-    'https://127.0.0.1'
+    'https://127.0.0.1',
+    'http://localhost.local'
 ]
 
 # Application definition
