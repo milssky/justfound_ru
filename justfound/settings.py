@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", default="key-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DJANGO_DEBUG", default="True")
+DEBUG = os.getenv("DJANGO_DEBUG", default=False) == "True"
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
