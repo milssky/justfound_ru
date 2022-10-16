@@ -24,7 +24,7 @@ services:
       - ./media:/media/
 
   nginx:
-    image: nginx:1.21.6
+    image: jonasal/nginx-certbot:latest
     ports:
       - 80:80
       - 443:443
