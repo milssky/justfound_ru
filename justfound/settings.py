@@ -231,7 +231,7 @@ ALLOWED_URL_SCHEMES = [
     "sftp", "ssh", "tel", "telnet", "tftp", "vnc", "xmpp",
 ]
 
-SITE_HOST = os.getenv("SITE_HOST", default="http://localhost.local")
+SITE_HOST = os.getenv("SITE_HOST", default="https://justfound.ru")
 
 POST_TEMPLATE = (
     "**{}**\n\n"
