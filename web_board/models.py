@@ -11,6 +11,7 @@ User = get_user_model()
 class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     text = MartorField()
+    tg_text = MartorField()
     pub_date = models.DateTimeField(auto_now_add=True, verbose_name="Дата публикации")
     author = models.ForeignKey(
         User,
@@ -21,7 +22,7 @@ class Post(models.Model):
     is_posted = models.BooleanField(default=False, blank=False, null=False)
 
     def make_full_markdown_post(self):
-        return settings.POST_TEMPLATE.format(self.title, self.text, settings.SITE_HOST, self.get_absolute_url())
+        return settings.POST_TEMPLATE.format(self.title, self.tg_text, settings.SITE_HOST, self.get_absolute_url())
 
     def get_absolute_url(self):
         from django.urls import reverse
