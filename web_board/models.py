@@ -10,8 +10,8 @@ User = get_user_model()
 
 class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
-    text = MartorField()
-    tg_text = MartorField()
+    text = MartorField(verbose_name="Полный текст")
+    tg_text = MartorField(verbose_name="Текст для телеграмма")
     pub_date = models.DateTimeField(auto_now_add=True, verbose_name="Дата публикации")
     author = models.ForeignKey(
         User,
